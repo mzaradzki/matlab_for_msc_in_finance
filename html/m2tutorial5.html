@@ -1,0 +1,581 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MATLAB Tutorial 5 - Mathieu ZARADZKI</title><meta name="generator" content="MATLAB 8.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-10-26"><meta name="DC.source" content="m2tutorial5.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>MATLAB Tutorial 5 - Mathieu ZARADZKI</h1><!--introduction--><pre>More of the same things</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">DEMO 1 - Importing a CSV file using Matlab commands ...</a></li><li><a href="#2">DEMO 2 - Boosting your Matlab with a Data API</a></li><li><a href="#3">SETUP - We will this for our questions</a></li><li><a href="#4">QUESTION 1 - Prior data inspection</a></li><li><a href="#5">ANSWER TO #1</a></li><li><a href="#6">QUESTION 2 - Jamie Dimon's office</a></li><li><a href="#7">ANSWER TO #2</a></li><li><a href="#8">QUESTION 3 - Lets do another optimization</a></li><li><a href="#9">ANSWER TO #3</a></li><li><a href="#10">QUESTION 4 - Working as a Quant Analyst ...</a></li><li><a href="#11">ANSWER TO #4</a></li><li><a href="#12">QUESTION 5 - Still working in the Risk Department</a></li><li><a href="#13">ANSWER TO #5</a></li><li><a href="#14">QUESTION 6 - GARCH iteration</a></li><li><a href="#15">ANSWER TO #6</a></li><li><a href="#16">QUESTION 7 - Finance and Factors colliding (difficult but not too much)</a></li></ul></div><h2>DEMO 1 - Importing a CSV file using Matlab commands ...<a name="1"></a></h2><pre>... using the Import UI function is too inconvenient in the long run.
+So please take time to remember this command that we already used in the
+econometrics class to store the content of a file into a *dataset*.
+Note that a *dataset* is similar to a *struct* as you can see its
+content by browsing the Worspace and using the "." notation such as
+ds.SBUX to get Starbucks stock prices.</pre><pre class="codeinput">ds = dataset(<span class="string">'File'</span>, <span class="string">'stockmarketdataset.csv'</span>, <span class="string">'Delimiter'</span>, <span class="string">','</span>);
+
+length(ds.SBUX) <span class="comment">% will return the number of observations in the array</span>
+</pre><pre class="codeoutput">
+ans =
+
+   759
+
+</pre><h2>DEMO 2 - Boosting your Matlab with a Data API<a name="2"></a></h2><pre>Computing is about standing between Input and Output.
+So without any Input it gets really dull.
+Save the +Quandl folder from this page with your other Matlab files and
+test the following line "data = Quandl.get('FRED/JPNCPIBLS');"
+LINK: https://github.com/quandl/Matlab</pre><pre class="codeinput">Quandl.auth(<span class="string">'8aVZ3CksqJmfEozdFNbB'</span>); <span class="comment">% my own key, please get yours</span>
+
+JPNCPI = Quandl.get(<span class="string">'FRED/JPNCPIBLS'</span>); <span class="comment">% Japan Consumer Price Index</span>
+
+plot(JPNCPI.data);
+</pre><img vspace="5" hspace="5" src="m2tutorial5_01.png" alt=""> <h2>SETUP - We will this for our questions<a name="3"></a></h2><pre class="codeinput">IBMdata = getstockdata(<span class="string">'IBM'</span>); <span class="comment">% IBM</span>
+JPMdata = getstockdata(<span class="string">'JPM'</span>); <span class="comment">% JP Morgan</span>
+WMTdata = getstockdata(<span class="string">'WMT'</span>); <span class="comment">% Walmart</span>
+MMMdata = getstockdata(<span class="string">'MMM'</span>); <span class="comment">% 3M</span>
+XOMdata = getstockdata(<span class="string">'XOM'</span>); <span class="comment">% Exxon Mobile</span>
+
+SPXdata = getstockdata(<span class="string">'Index_SPX500'</span>); <span class="comment">% the S&amp;P 500</span>
+</pre><h2>QUESTION 1 - Prior data inspection<a name="4"></a></h2><pre>Before we try to study portfolios with the above stocks lets first see
+how their are distributed.
+For this please create a "Box Plot" of their returns.</pre><h2>ANSWER TO #1<a name="5"></a></h2><pre class="codeinput">stockmatrix = [IBMdata.logreturns, JPMdata.logreturns, WMTdata.logreturns, MMMdata.logreturns, XOMdata.logreturns];
+
+boxplot(stockmatrix);
+</pre><img vspace="5" hspace="5" src="m2tutorial5_02.png" alt=""> <h2>QUESTION 2 - Jamie Dimon's office<a name="6"></a></h2><pre>The story goes that JP Morgan CEO (way before Dimon's tenure) asked his
+Risk Department to come with a SINGLE number to measure the bank market risk
+exposure.
+This is how the Value At Risk (VaR) was created.
+Define a portfolio (the weights) of the above stocks and compute its VaR.
+Please do so by two methods:
+    a) by looking at the sample data quantiles
+    b) by assuming a normal distribution (matching mean/variance) (parametric approach)
+TIP: here we simply ask for the 1-period ahead 5% VaR.
+TIP: nobody is scared of making more money than predicted so the VaR is
+defined on one side of the distribution only.</pre><h2>ANSWER TO #2<a name="7"></a></h2><pre class="codeinput">myWeights = ones(5,1) * 0.20; <span class="comment">% an equi-weighted portfolio for example</span>
+myPTFLreturns = stockmatrix * myWeights;
+
+SampleVar1 = prctile(myPTFLreturns, 5)
+SampleVar5 = prctile(myPTFLreturns, 1)
+
+NormalVar5 = norminv(0.05, mean(myPTFLreturns), std(myPTFLreturns))
+NormalVar1 = norminv(0.01, mean(myPTFLreturns), std(myPTFLreturns))
+</pre><pre class="codeoutput">
+SampleVar1 =
+
+   -0.0188
+
+
+SampleVar5 =
+
+   -0.0371
+
+
+NormalVar5 =
+
+   -0.0209
+
+
+NormalVar1 =
+
+   -0.0297
+
+</pre><h2>QUESTION 3 - Lets do another optimization<a name="8"></a></h2><pre>Re-use the optimisation method seen in the 4th class to optimize the
+Sharpe Ratio of the portfolio BUT adding a new constraint.
+We only want to keep the portfolio that have MORE (less negative)
+skewness than the INDEX.
+The reason is that negative skewness is related to extreme loss risk.
+TIP: We defined Sharpe Ratio objective as: mean(logreturns) / std(logreturns)</pre><h2>ANSWER TO #3<a name="9"></a></h2><pre class="codeinput">NbSims = 10000;
+
+BESTSHARPE = -2; <span class="comment">% something so BAD that even the FIRST will improve it</span>
+
+<span class="keyword">for</span> i = 1 : NbSims
+    weights = rand(5,1);
+    weights = weights / sum(weights);
+
+    PTFLreturns = stockmatrix * weights;
+
+    <span class="keyword">if</span> skewness(PTFLreturns) &gt; skewness(SPXdata.logreturns)
+
+        sharperatio = mean(PTFLreturns) / std(PTFLreturns);
+
+        <span class="keyword">if</span> sharperatio &gt; BESTSHARPE
+            i
+            BESTSHARPE = sharperatio
+            BESTWEIGTHS = weights;
+        <span class="keyword">end</span> <span class="comment">% remember to END your IF statement</span>
+
+    <span class="keyword">end</span> <span class="comment">% remember to END your IF statement</span>
+
+<span class="keyword">end</span> <span class="comment">% remember to END your FOR loop</span>
+</pre><pre class="codeoutput">
+i =
+
+     1
+
+
+BESTSHARPE =
+
+    0.0149
+
+
+i =
+
+     2
+
+
+BESTSHARPE =
+
+    0.0176
+
+
+i =
+
+     6
+
+
+BESTSHARPE =
+
+    0.0194
+
+
+i =
+
+    21
+
+
+BESTSHARPE =
+
+    0.0210
+
+
+i =
+
+    65
+
+
+BESTSHARPE =
+
+    0.0221
+
+
+i =
+
+   231
+
+
+BESTSHARPE =
+
+    0.0222
+
+
+i =
+
+        1071
+
+
+BESTSHARPE =
+
+    0.0230
+
+
+i =
+
+        1433
+
+
+BESTSHARPE =
+
+    0.0233
+
+</pre><h2>QUESTION 4 - Working as a Quant Analyst ...<a name="10"></a></h2><pre>... much more realistic than taking over Jamie Dimon for a first job.
+In the case of a 5 stocks portfolio allocation, can you optimize the
+weights using a *function maximization* of the Sharpe ratio?
+So this time we dont use simulations anymore.
+TIP: you can use "fmincon" function to deal with constraints:
+http://www.mathworks.fr/help/optim/ug/fmincon.html
+It will look something like this:
+[BestWs, BestSR] = fmincon(someSRFunction, Weights0, MATineq, VECineq, MATeq, VECeq, LwBnd, HiBnd);
+In this problem the constraints are:
+  a) sum(weights) = 1 (equality)
+  b) weights(1) &gt; 0, ... ... , weights(5) &gt; 0 (Lower Bounds)</pre><h2>ANSWER TO #4<a name="11"></a></h2><pre>NOTE: in MATLAB we minimize (-goal) instead of maximizing (+goal)
+After cheking the help for *fmincon* we find that:
+W0 = [0.2;0.2;0.2;0.2;0.2]
+MATineq = []
+VECineq = []
+MATeq = [1 1 1 1 1]
+VECeq = [1]
+LB = [0;0;0;0;0]</pre><pre class="codeinput">minusSR = @(Ws) -mean(stockmatrix * Ws) / std(stockmatrix * Ws); <span class="comment">% function definition</span>
+
+[BestWs, BestSR] = fmincon(minusSR, [0.2;0.2;0.2;0.2;0.2], [], [], [1 1 1 1 1], [1], [0;0;0;0;0]);
+
+BestWs
+-BestSR <span class="comment">% we need to take -(-SR) ...</span>
+</pre><pre class="codeoutput">Warning: The default trust-region-reflective algorithm does not solve problems
+with the constraints you have specified. FMINCON will use the active-set
+algorithm instead. For information on applicable algorithms, see Choosing the
+Algorithm in the documentation. 
+Warning: Your current settings will run a different algorithm (interior-point)
+in a future release. 
+
+Local minimum possible. Constraints satisfied.
+
+fmincon stopped because the predicted change in the objective function
+is less than the default value of the function tolerance and constraints 
+are satisfied to within the default value of the constraint tolerance.
+
+
+
+Active inequalities (to within options.TolCon = 1e-06):
+  lower      upper     ineqlin   ineqnonlin
+    2                                 
+    3                                 
+    4                                 
+
+BestWs =
+
+    0.4709
+   -0.0000
+    0.0000
+         0
+    0.5291
+
+
+ans =
+
+    0.0236
+
+</pre><h2>QUESTION 5 - Still working in the Risk Department<a name="12"></a></h2><pre>Another popular concept in Risk Management than came from JPM is the
+EWMA volatility model.
+Can you write a function to compute it?
+Can you plot it in the case of the SPX500?
+TIP: you can do it with a loop given its recursive/iterative definition.</pre><h2>ANSWER TO #5<a name="13"></a></h2><pre class="codeinput">lambda = 0.95;
+
+vol = 0;
+lag = 70;
+ewmavols = nan(length(SPXdata.logreturns)-lag,1);
+<span class="keyword">for</span> i=1:length(SPXdata.logreturns)
+    vol = sqrt(lambda*vol*vol + (1-lambda)*SPXdata.logreturns(i)^2);
+    <span class="keyword">if</span> i&gt;=lag
+        ewmavols(i-lag+1) = vol;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+plot(ewmavols);
+</pre><img vspace="5" hspace="5" src="m2tutorial5_03.png" alt=""> <h2>QUESTION 6 - GARCH iteration<a name="14"></a></h2><pre>A fundamental model in volatility modeling (due to Engle/Bollerslev)
+is GARCH one.
+Like the EWMA it allows to define the variance recursively.
+Assuming you have Kappa, Alpha and Beta for a GARCH(1,1) can you
+simulate the future value of the volatility process?</pre><h2>ANSWER TO #6<a name="15"></a></h2><pre class="codeinput">opts = optimset(<span class="string">'Display'</span>,<span class="string">'off'</span>);
+
+[Kappa, Alpha, Beta] = ugarch(SPXdata.logreturns, 1, 1, opts); <span class="comment">% a way to have "good" values</span>
+
+Hinfinity = Kappa/(1-Alpha-Beta); <span class="comment">% we will review this in WMF class</span>
+
+garchvols = nan(10000, 52); <span class="comment">% we simulate 10000 paths each over 52 weeks</span>
+
+<span class="keyword">for</span> n = 1 : 10000
+    H = Hinfinity; <span class="comment">% we assume each of our simualtion starts from long-term average</span>
+    <span class="keyword">for</span> j = 1 : 52
+        H = Kappa + Alpha*H + Beta*H*(randn^2); <span class="comment">% GARCH iterative definition</span>
+        garchvols(n,j) = sqrt(H); <span class="comment">% we prefer to chart volatility rather than variance</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+plot(prctile(garchvols,10), <span class="string">'-b'</span>); <span class="comment">% we plot the 10th percentile as LOWER band</span>
+hold <span class="string">on</span>;
+plot(prctile(garchvols,90), <span class="string">'-r'</span>); <span class="comment">% we plot the 90th percentile as UPPER band</span>
+plot(mean(garchvols), <span class="string">'*g'</span>); <span class="comment">% we plot the central scenario too</span>
+hold <span class="string">off</span>;
+</pre><pre class="codeoutput">Warning: The default trust-region-reflective algorithm does not solve problems
+with the constraints you have specified. FMINCON will use the active-set
+algorithm instead. For information on applicable algorithms, see Choosing the
+Algorithm in the documentation. 
+Warning: Your current settings will run a different algorithm (interior-point)
+in a future release. 
+</pre><img vspace="5" hspace="5" src="m2tutorial5_04.png" alt=""> <h2>QUESTION 7 - Finance and Factors colliding (difficult but not too much)<a name="16"></a></h2><pre>During tutorial 4 we saw how to estimate factor-based covariance matrix
+for a set of asset price returns?
+We did this using the CAPM 1-factor model.
+Using the same approach can you derive a factor-based covariance matrix
+but this time assuming each stock behaves like in the Fama-French model?
+Again to do the calculations (you need some paper+pencil before you do
+any serious coding) you need to assume that the residuals are
+independant from one stock to another one.</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MATLAB Tutorial 5 - Mathieu ZARADZKI
+%  More of the same things
+
+
+%% DEMO 1 - Importing a CSV file using Matlab commands ...
+%  ... using the Import UI function is too inconvenient in the long run.
+%  So please take time to remember this command that we already used in the
+%  econometrics class to store the content of a file into a *dataset*.
+%  Note that a *dataset* is similar to a *struct* as you can see its
+%  content by browsing the Worspace and using the "." notation such as
+%  ds.SBUX to get Starbucks stock prices.
+
+ds = dataset('File', 'stockmarketdataset.csv', 'Delimiter', ',');
+
+length(ds.SBUX) % will return the number of observations in the array
+
+
+%% DEMO 2 - Boosting your Matlab with a Data API
+%  Computing is about standing between Input and Output.
+%  So without any Input it gets really dull.
+%  Save the +Quandl folder from this page with your other Matlab files and
+%  test the following line "data = Quandl.get('FRED/JPNCPIBLS');"
+%  LINK: https://github.com/quandl/Matlab
+
+Quandl.auth('8aVZ3CksqJmfEozdFNbB'); % my own key, please get yours
+
+JPNCPI = Quandl.get('FRED/JPNCPIBLS'); % Japan Consumer Price Index
+
+plot(JPNCPI.data);
+
+
+%% SETUP - We will this for our questions
+
+IBMdata = getstockdata('IBM'); % IBM
+JPMdata = getstockdata('JPM'); % JP Morgan
+WMTdata = getstockdata('WMT'); % Walmart
+MMMdata = getstockdata('MMM'); % 3M
+XOMdata = getstockdata('XOM'); % Exxon Mobile
+
+SPXdata = getstockdata('Index_SPX500'); % the S&P 500
+
+
+%% QUESTION 1 - Prior data inspection
+%  Before we try to study portfolios with the above stocks lets first see
+%  how their are distributed.
+%  For this please create a "Box Plot" of their returns.
+
+
+%% ANSWER TO #1
+
+stockmatrix = [IBMdata.logreturns, JPMdata.logreturns, WMTdata.logreturns, MMMdata.logreturns, XOMdata.logreturns];
+
+boxplot(stockmatrix);
+
+
+%% QUESTION 2 - Jamie Dimon's office
+%  The story goes that JP Morgan CEO (way before Dimon's tenure) asked his
+%  Risk Department to come with a SINGLE number to measure the bank market risk
+%  exposure.
+%  This is how the Value At Risk (VaR) was created.
+%  Define a portfolio (the weights) of the above stocks and compute its VaR.
+%  Please do so by two methods:
+%      a) by looking at the sample data quantiles
+%      b) by assuming a normal distribution (matching mean/variance) (parametric approach)
+%  TIP: here we simply ask for the 1-period ahead 5% VaR.
+%  TIP: nobody is scared of making more money than predicted so the VaR is
+%  defined on one side of the distribution only.
+
+
+%% ANSWER TO #2
+
+myWeights = ones(5,1) * 0.20; % an equi-weighted portfolio for example
+myPTFLreturns = stockmatrix * myWeights;
+
+SampleVar1 = prctile(myPTFLreturns, 5)
+SampleVar5 = prctile(myPTFLreturns, 1)
+
+NormalVar5 = norminv(0.05, mean(myPTFLreturns), std(myPTFLreturns))
+NormalVar1 = norminv(0.01, mean(myPTFLreturns), std(myPTFLreturns))
+
+
+%% QUESTION 3 - Lets do another optimization 
+%  Re-use the optimisation method seen in the 4th class to optimize the
+%  Sharpe Ratio of the portfolio BUT adding a new constraint.
+%  We only want to keep the portfolio that have MORE (less negative)
+%  skewness than the INDEX.
+%  The reason is that negative skewness is related to extreme loss risk.
+%  TIP: We defined Sharpe Ratio objective as: mean(logreturns) / std(logreturns)
+
+
+%% ANSWER TO #3
+
+NbSims = 10000;
+
+BESTSHARPE = -2; % something so BAD that even the FIRST will improve it
+
+for i = 1 : NbSims
+    weights = rand(5,1);
+    weights = weights / sum(weights);
+    
+    PTFLreturns = stockmatrix * weights;
+    
+    if skewness(PTFLreturns) > skewness(SPXdata.logreturns)
+        
+        sharperatio = mean(PTFLreturns) / std(PTFLreturns);
+        
+        if sharperatio > BESTSHARPE
+            i
+            BESTSHARPE = sharperatio
+            BESTWEIGTHS = weights;
+        end % remember to END your IF statement
+        
+    end % remember to END your IF statement
+    
+end % remember to END your FOR loop
+
+
+%% QUESTION 4 - Working as a Quant Analyst ...
+%  ... much more realistic than taking over Jamie Dimon for a first job.
+%  In the case of a 5 stocks portfolio allocation, can you optimize the
+%  weights using a *function maximization* of the Sharpe ratio?
+%  So this time we dont use simulations anymore.
+%  TIP: you can use "fmincon" function to deal with constraints:
+%  http://www.mathworks.fr/help/optim/ug/fmincon.html
+%  It will look something like this:
+%  [BestWs, BestSR] = fmincon(someSRFunction, Weights0, MATineq, VECineq, MATeq, VECeq, LwBnd, HiBnd);
+%  In this problem the constraints are:
+%    a) sum(weights) = 1 (equality)
+%    b) weights(1) > 0, ... ... , weights(5) > 0 (Lower Bounds)
+
+
+%% ANSWER TO #4
+%  NOTE: in MATLAB we minimize (-goal) instead of maximizing (+goal)
+%  After cheking the help for *fmincon* we find that:
+%  W0 = [0.2;0.2;0.2;0.2;0.2]
+%  MATineq = []
+%  VECineq = []
+%  MATeq = [1 1 1 1 1]
+%  VECeq = [1]
+%  LB = [0;0;0;0;0]
+
+minusSR = @(Ws) -mean(stockmatrix * Ws) / std(stockmatrix * Ws); % function definition
+
+[BestWs, BestSR] = fmincon(minusSR, [0.2;0.2;0.2;0.2;0.2], [], [], [1 1 1 1 1], [1], [0;0;0;0;0]);
+
+BestWs
+-BestSR % we need to take -(-SR) ...
+
+
+%% QUESTION 5 - Still working in the Risk Department
+%  Another popular concept in Risk Management than came from JPM is the
+%  EWMA volatility model.
+%  Can you write a function to compute it?
+%  Can you plot it in the case of the SPX500?
+%  TIP: you can do it with a loop given its recursive/iterative definition.
+
+
+%% ANSWER TO #5
+
+lambda = 0.95;
+
+vol = 0;
+lag = 70;
+ewmavols = nan(length(SPXdata.logreturns)-lag,1);
+for i=1:length(SPXdata.logreturns)
+    vol = sqrt(lambda*vol*vol + (1-lambda)*SPXdata.logreturns(i)^2);
+    if i>=lag
+        ewmavols(i-lag+1) = vol;
+    end
+end
+
+plot(ewmavols);
+
+
+%%  QUESTION 6 - GARCH iteration
+%  A fundamental model in volatility modeling (due to Engle/Bollerslev)
+%  is GARCH one.
+%  Like the EWMA it allows to define the variance recursively.
+%  Assuming you have Kappa, Alpha and Beta for a GARCH(1,1) can you
+%  simulate the future value of the volatility process?
+
+
+%% ANSWER TO #6
+
+opts = optimset('Display','off');
+
+[Kappa, Alpha, Beta] = ugarch(SPXdata.logreturns, 1, 1, opts); % a way to have "good" values
+
+Hinfinity = Kappa/(1-Alpha-Beta); % we will review this in WMF class
+
+garchvols = nan(10000, 52); % we simulate 10000 paths each over 52 weeks
+
+for n = 1 : 10000
+    H = Hinfinity; % we assume each of our simualtion starts from long-term average
+    for j = 1 : 52
+        H = Kappa + Alpha*H + Beta*H*(randn^2); % GARCH iterative definition
+        garchvols(n,j) = sqrt(H); % we prefer to chart volatility rather than variance
+    end
+end
+
+plot(prctile(garchvols,10), '-b'); % we plot the 10th percentile as LOWER band
+hold on;
+plot(prctile(garchvols,90), '-r'); % we plot the 90th percentile as UPPER band
+plot(mean(garchvols), '*g'); % we plot the central scenario too
+hold off;
+
+
+%% QUESTION 7 - Finance and Factors colliding (difficult but not too much)
+%  During tutorial 4 we saw how to estimate factor-based covariance matrix
+%  for a set of asset price returns?
+%  We did this using the CAPM 1-factor model.
+%  Using the same approach can you derive a factor-based covariance matrix
+%  but this time assuming each stock behaves like in the Fama-French model?
+%  Again to do the calculations (you need some paper+pencil before you do
+%  any serious coding) you need to assume that the residuals are
+%  independant from one stock to another one.
+
+
+##### SOURCE END #####
+--></body></html>

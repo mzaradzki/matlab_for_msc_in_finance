@@ -1,0 +1,460 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MATLAB Tutorial 4 - Mathieu ZARADZKI</title><meta name="generator" content="MATLAB 8.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-10-23"><meta name="DC.source" content="m2tutorial4.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>MATLAB Tutorial 4 - Mathieu ZARADZKI</h1><!--introduction--><pre>Lets try again important questions from Tutorial 3</pre><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">QUESTION 1 - Tracking the index</a></li><li><a href="#2">QUESTION 2 - Portfolio algebra (ask help with the math if necessary)</a></li><li><a href="#3">QUESTION 3 - Working as a Quant Analyst</a></li><li><a href="#4">QUESTION 4 - Boosting your Matlab with a Data API</a></li><li><a href="#5">QUESTION 5 - Checking the statistics tables are correct</a></li><li><a href="#6">QUESTION 6 - Writing a function from #5</a></li><li><a href="#7">QUESTION 7 - What about Jarque Berra accuracy? (DIFFICULT)</a></li></ul></div><h2>QUESTION 1 - Tracking the index<a name="1"></a></h2><pre>NOTE: This was question #6 in the previous tutorial.
+Select 5 US stocks and foom a matrix of their logreturns.
+Try different (random) weights to find a long only portfolio that tracks
+the best the SPX index.
+TIP: You are encourage to re-use and modify the "getstockdata" and "greeksoup"
+functions from the 2nd tutorial</pre><pre class="codeinput">IBMdata = getstockdata(<span class="string">'IBM'</span>); <span class="comment">% IBM</span>
+JPMdata = getstockdata(<span class="string">'JPM'</span>); <span class="comment">% JP Morgan</span>
+WMTdata = getstockdata(<span class="string">'WMT'</span>); <span class="comment">% Walmart</span>
+MMMdata = getstockdata(<span class="string">'MMM'</span>); <span class="comment">% 3M</span>
+XOMdata = getstockdata(<span class="string">'XOM'</span>); <span class="comment">% Exxon Mobile</span>
+
+SPXdata = getstockdata(<span class="string">'Index_SPX500'</span>);
+
+stockmatrix = [IBMdata.logreturns, JPMdata.logreturns, WMTdata.logreturns, MMMdata.logreturns, XOMdata.logreturns];
+
+NbSims = 10000;
+
+BESTCORRELATION = -2; <span class="comment">% something so BAD that even the FIRST will improve it</span>
+
+<span class="keyword">for</span> i = 1 : NbSims
+    weights = rand(5,1);
+    weights = weights / sum(weights);
+
+    PTFLlogreturns = stockmatrix * weights;
+
+    correlation = corr(PTFLlogreturns, SPXdata.logreturns);
+
+    <span class="keyword">if</span> (correlation &gt; BESTCORRELATION)
+        i
+        BESTCORRELATION = correlation
+        BESTWEIGTHS = weights;
+    <span class="keyword">end</span> <span class="comment">% remember to END your IF statement</span>
+<span class="keyword">end</span> <span class="comment">% remember to END your FOR loop</span>
+</pre><pre class="codeoutput">
+i =
+
+     1
+
+
+BESTCORRELATION =
+
+    0.9266
+
+
+i =
+
+     4
+
+
+BESTCORRELATION =
+
+    0.9379
+
+
+i =
+
+    42
+
+
+BESTCORRELATION =
+
+    0.9407
+
+
+i =
+
+    48
+
+
+BESTCORRELATION =
+
+    0.9408
+
+
+i =
+
+   190
+
+
+BESTCORRELATION =
+
+    0.9410
+
+
+i =
+
+        1099
+
+
+BESTCORRELATION =
+
+    0.9410
+
+
+i =
+
+        1108
+
+
+BESTCORRELATION =
+
+    0.9421
+
+
+i =
+
+        5561
+
+
+BESTCORRELATION =
+
+    0.9422
+
+
+i =
+
+        5650
+
+
+BESTCORRELATION =
+
+    0.9423
+
+</pre><h2>QUESTION 2 - Portfolio algebra (ask help with the math if necessary)<a name="2"></a></h2><pre>NOTE: This was question #8 in the previous tutorial.
+Lets assume that:
+a) for 5 different stocks the previous "Alpha and Beta" equation holds, and that
+b) for two different stocks the Epsilon' are independant from each other.
+Can you use the different Beta' and Sigma' to build a "model" covariance matrix?</pre><pre class="codeinput">betas = nan(5,1);
+alphas = nan(5,1);
+sigmas = nan(5,1);
+
+<span class="keyword">for</span> i=1:5
+    covmatrix = cov(stockmatrix(:,i), SPXdata.logreturns);
+
+    betas(i) = covmatrix(2,1) / covmatrix(2,2); <span class="comment">% the (2,2) element is the variance !</span>
+
+    alphas(i) = mean(stockmatrix(:,i) - betas(i) * SPXdata.logreturns);
+
+    epsilons = stockmatrix(:,i) - betas(i) * SPXdata.logreturns - alphas(i);
+
+    sigmas(i) = std(epsilons);
+<span class="keyword">end</span>
+
+capmcovmat = (betas * betas') * var(SPXdata.logreturns) + diag(sigmas.^2)
+
+realcovmat = cov(stockmatrix) <span class="comment">% to check the quality of our approximation</span>
+</pre><pre class="codeoutput">
+capmcovmat =
+
+   1.0e-03 *
+
+    0.1850    0.1980    0.0668    0.1052    0.1189
+    0.1980    0.7394    0.1419    0.2235    0.2528
+    0.0668    0.1419    0.1494    0.0754    0.0852
+    0.1052    0.2235    0.0754    0.2081    0.1343
+    0.1189    0.2528    0.0852    0.1343    0.2545
+
+
+realcovmat =
+
+   1.0e-03 *
+
+    0.1850    0.1902    0.0685    0.1054    0.1114
+    0.1902    0.7394    0.1250    0.2095    0.2001
+    0.0685    0.1250    0.1494    0.0768    0.0808
+    0.1054    0.2095    0.0768    0.2081    0.1336
+    0.1114    0.2001    0.0808    0.1336    0.2545
+
+</pre><h2>QUESTION 3 - Working as a Quant Analyst<a name="3"></a></h2><pre>NOTE: This is an *extension* of question #9 in the previous tutorial.
+In the case of a 3 stocks portfolio allocation, can you optimize the
+weights using a function maximization of the Sharpe ratio?
+Remember that visually you could only optimize between 2 stocks.
+TIP: you can use "fminsearch" function
+TIP: if you have 3 stocks you only have 2 variables as their sum is 100%</pre><h2>QUESTION 4 - Boosting your Matlab with a Data API<a name="4"></a></h2><pre>Computing is about standing between Input and Output.
+So without any Input it gets really dull.
+Save the +Quandl folder from this page with your other Matlab files and
+test the following line "data = Quandl.get('NSE/OIL');"
+LINK: https://github.com/quandl/Matlab</pre><pre class="codeinput">Quandl.auth(<span class="string">'8aVZ3CksqJmfEozdFNbB'</span>); <span class="comment">% my own key, please get yours</span>
+
+JPNCPI = Quandl.get(<span class="string">'FRED/JPNCPIBLS'</span>); <span class="comment">% Japan Consumer Price Index</span>
+
+plot(JPNCPI.data);
+</pre><img vspace="5" hspace="5" src="m2tutorial4_01.png" alt=""> <h2>QUESTION 5 - Checking the statistics tables are correct<a name="5"></a></h2><pre>No need to do a difficult math to check if the statisticians who built
+the t-distribution and the chi-square-distribution are correct.
+Consider a ChiSquare with 2 components.
+Simulate its random output by using is definition as Chi2: X1^2 + X2^2
+where X1 and X2 are Normal random variables.
+Using 10000 simulations (please don't print on the screen) compute the
+90-percentile of your simpulated sample and compare with critial values
+from the tables.</pre><pre class="codeinput">X1 = randn(10000, 1); <span class="comment">% a 1st normal law simulation</span>
+X2 = randn(10000, 1); <span class="comment">% a 2nd normal law simulation</span>
+
+CHI2SIMS = X1.^2 + X2.^2; <span class="comment">% we get the ChiSquare(2) using its definition</span>
+
+prctile(CHI2SIMS, 90) <span class="comment">% the builtin percentile function</span>
+
+chi2inv(0.90, 2) <span class="comment">% the converse (inverse) of the CDF function</span>
+</pre><pre class="codeoutput">
+ans =
+
+    4.6428
+
+
+ans =
+
+    4.6052
+
+</pre><h2>QUESTION 6 - Writing a function from #5<a name="6"></a></h2><pre>The calculations you did for question #5 are usefull so lets turn this
+into a function so that:
+    a) the user can specify the number of components
+    b) the user get the list of 5, 10, 15, ..., 90, 95 percentiles as ouput</pre><pre class="codeinput">NbChi2Comp = 5; <span class="comment">% change this value for more/less components</span>
+
+CHI2SIMS = zeros(10000, 1);
+
+<span class="keyword">for</span> i = 1 : NbChi2Comp
+
+    Xs = randn(10000, 1); <span class="comment">% another normal law simulation</span>
+
+    CHI2SIMS = CHI2SIMS + Xs.^2;
+
+<span class="keyword">end</span>
+
+prctile(CHI2SIMS, 90)
+
+chi2inv(0.90, NbChi2Comp)
+</pre><pre class="codeoutput">
+ans =
+
+    9.2830
+
+
+ans =
+
+    9.2364
+
+</pre><h2>QUESTION 7 - What about Jarque Berra accuracy? (DIFFICULT)<a name="7"></a></h2><pre>In reality the Jarque Bera test (jbtest in Matlab) we have studied is an
+approximation.
+In reallity the JB statistics is not a Chi Square.
+Can you use random simulations and the jbtest function to get a sample
+of the JBstat distribution.
+You are free to use a loop.
+Then compare with QQplot the jbtest with the ChiSquare distribution.</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MATLAB Tutorial 4 - Mathieu ZARADZKI
+%  Lets try again important questions from Tutorial 3
+
+
+%% QUESTION 1 - Tracking the index
+%  NOTE: This was question #6 in the previous tutorial.
+%  Select 5 US stocks and foom a matrix of their logreturns.
+%  Try different (random) weights to find a long only portfolio that tracks
+%  the best the SPX index.
+%  TIP: You are encourage to re-use and modify the "getstockdata" and "greeksoup" 
+%  functions from the 2nd tutorial
+
+
+IBMdata = getstockdata('IBM'); % IBM
+JPMdata = getstockdata('JPM'); % JP Morgan
+WMTdata = getstockdata('WMT'); % Walmart
+MMMdata = getstockdata('MMM'); % 3M
+XOMdata = getstockdata('XOM'); % Exxon Mobile
+
+SPXdata = getstockdata('Index_SPX500');
+
+stockmatrix = [IBMdata.logreturns, JPMdata.logreturns, WMTdata.logreturns, MMMdata.logreturns, XOMdata.logreturns];
+
+NbSims = 10000;
+
+BESTCORRELATION = -2; % something so BAD that even the FIRST will improve it
+
+for i = 1 : NbSims
+    weights = rand(5,1);
+    weights = weights / sum(weights);
+    
+    PTFLlogreturns = stockmatrix * weights;
+    
+    correlation = corr(PTFLlogreturns, SPXdata.logreturns);
+    
+    if (correlation > BESTCORRELATION)
+        i
+        BESTCORRELATION = correlation
+        BESTWEIGTHS = weights;
+    end % remember to END your IF statement
+end % remember to END your FOR loop
+
+
+%% QUESTION 2 - Portfolio algebra (ask help with the math if necessary)
+%  NOTE: This was question #8 in the previous tutorial.
+%  Lets assume that:
+%  a) for 5 different stocks the previous "Alpha and Beta" equation holds, and that
+%  b) for two different stocks the Epsilon' are independant from each other.
+%  Can you use the different Beta' and Sigma' to build a "model" covariance matrix?
+
+betas = nan(5,1);
+alphas = nan(5,1);
+sigmas = nan(5,1);
+
+for i=1:5
+    covmatrix = cov(stockmatrix(:,i), SPXdata.logreturns);
+    
+    betas(i) = covmatrix(2,1) / covmatrix(2,2); % the (2,2) element is the variance !
+    
+    alphas(i) = mean(stockmatrix(:,i) - betas(i) * SPXdata.logreturns);
+    
+    epsilons = stockmatrix(:,i) - betas(i) * SPXdata.logreturns - alphas(i);
+    
+    sigmas(i) = std(epsilons);
+end
+
+capmcovmat = (betas * betas') * var(SPXdata.logreturns) + diag(sigmas.^2)
+
+realcovmat = cov(stockmatrix) % to check the quality of our approximation
+
+
+%% QUESTION 3 - Working as a Quant Analyst
+%  NOTE: This is an *extension* of question #9 in the previous tutorial.
+%  In the case of a 3 stocks portfolio allocation, can you optimize the
+%  weights using a function maximization of the Sharpe ratio?
+%  Remember that visually you could only optimize between 2 stocks.
+%  TIP: you can use "fminsearch" function
+%  TIP: if you have 3 stocks you only have 2 variables as their sum is 100%
+
+
+%% QUESTION 4 - Boosting your Matlab with a Data API
+%  Computing is about standing between Input and Output.
+%  So without any Input it gets really dull.
+%  Save the +Quandl folder from this page with your other Matlab files and
+%  test the following line "data = Quandl.get('NSE/OIL');"
+%  LINK: https://github.com/quandl/Matlab
+
+Quandl.auth('8aVZ3CksqJmfEozdFNbB'); % my own key, please get yours
+
+JPNCPI = Quandl.get('FRED/JPNCPIBLS'); % Japan Consumer Price Index
+
+plot(JPNCPI.data);
+
+
+%% QUESTION 5 - Checking the statistics tables are correct
+%  No need to do a difficult math to check if the statisticians who built
+%  the t-distribution and the chi-square-distribution are correct.
+%  Consider a ChiSquare with 2 components.
+%  Simulate its random output by using is definition as Chi2: X1^2 + X2^2
+%  where X1 and X2 are Normal random variables.
+%  Using 10000 simulations (please don't print on the screen) compute the
+%  90-percentile of your simpulated sample and compare with critial values
+%  from the tables.
+
+X1 = randn(10000, 1); % a 1st normal law simulation
+X2 = randn(10000, 1); % a 2nd normal law simulation
+
+CHI2SIMS = X1.^2 + X2.^2; % we get the ChiSquare(2) using its definition
+
+prctile(CHI2SIMS, 90) % the builtin percentile function
+
+chi2inv(0.90, 2) % the converse (inverse) of the CDF function
+
+
+%%  QUESTION 6 - Writing a function from #5
+%  The calculations you did for question #5 are usefull so lets turn this
+%  into a function so that:
+%      a) the user can specify the number of components
+%      b) the user get the list of 5, 10, 15, ..., 90, 95 percentiles as ouput
+
+NbChi2Comp = 5; % change this value for more/less components
+
+CHI2SIMS = zeros(10000, 1);
+
+for i = 1 : NbChi2Comp
+
+    Xs = randn(10000, 1); % another normal law simulation
+    
+    CHI2SIMS = CHI2SIMS + Xs.^2;
+    
+end
+
+prctile(CHI2SIMS, 90)
+
+chi2inv(0.90, NbChi2Comp)
+
+
+%%  QUESTION 7 - What about Jarque Berra accuracy? (DIFFICULT)
+%  In reality the Jarque Bera test (jbtest in Matlab) we have studied is an
+%  approximation.
+%  In reallity the JB statistics is not a Chi Square.
+%  Can you use random simulations and the jbtest function to get a sample
+%  of the JBstat distribution.
+%  You are free to use a loop.
+%  Then compare with QQplot the jbtest with the ChiSquare distribution.
+
+
+
+##### SOURCE END #####
+--></body></html>

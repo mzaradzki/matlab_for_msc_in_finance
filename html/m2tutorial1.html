@@ -1,0 +1,328 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MATLAB Tutorial 1 - Mathieu ZARADZKI</title><meta name="generator" content="MATLAB 8.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-10-02"><meta name="DC.source" content="m2tutorial1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>MATLAB Tutorial 1 - Mathieu ZARADZKI</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Data set description</a></li><li><a href="#2">Importing the data</a></li><li><a href="#3">QUESTION 1 - Single vector manipulation</a></li><li><a href="#4">QUESTION 2 - Multiple vector manipulation</a></li><li><a href="#5">QUESTION 3 - Using Matlab statistic functions</a></li><li><a href="#6">QUESTION 4 - Integral calculation</a></li><li><a href="#7">QUESTION 5 - Using matrix products</a></li><li><a href="#8">QUESTION 6 - Calculating over a range of values (vector)</a></li><li><a href="#9">QUESTION 7 - Calculating over a range of values (matrix)</a></li><li><a href="#10">QUESTION 8 - Auto-correlation</a></li><li><a href="#11">QUESTION 9 - Numerical integration</a></li><li><a href="#12">QUESTION 10 - Mixing several methods</a></li></ul></div><h2>Data set description<a name="1"></a></h2><pre>You are being provided with a set of stock sub-index prices
+They correspond to the 9 different sector classification of listed
+companies: industry, technology, financial, ...
+For more information you can read this webpage: http://www.sectorspdr.com/sectorspdr/</pre><h2>Importing the data<a name="2"></a></h2><pre>Use MATLAB to open data_m2lab1.csv
+Use the *Import* button and see the new variables in the Workspace
+Note that Comma Separated Value files are common way to share data</pre><h2>QUESTION 1 - Single vector manipulation<a name="3"></a></h2><pre>For DXLK compute:
+# the dimension
+# the sum and the average
+# the variance and standard deviation</pre><pre class="codeinput">size(DXLK) <span class="comment">% generic function</span>
+nbobs = length(DXLK) <span class="comment">% for a 1 dimensional array</span>
+mxlk = sum(DXLK)/nbobs <span class="comment">% the mean of DXLK</span>
+vxlk = sum(DXLK.^2)/nbobs - mxlk^2 <span class="comment">% the variance of DXLK - BEWARE the .^ !!!</span>
+sxlk = sqrt(vxlk) <span class="comment">% the std. deviation of DXLK</span>
+</pre><pre class="codeoutput">
+ans =
+
+   260     1
+
+
+nbobs =
+
+   260
+
+
+mxlk =
+
+    0.2758
+
+
+vxlk =
+
+    4.9566
+
+
+sxlk =
+
+    2.2263
+
+</pre><h2>QUESTION 2 - Multiple vector manipulation<a name="4"></a></h2><pre>For the pair of variables DXLK and DXLI compute:
+# the covariance
+# the correlation</pre><h2>QUESTION 3 - Using Matlab statistic functions<a name="5"></a></h2><pre>Use the "cov" function to get the matrix for DXLK, DXLI, DXLF, DXLU
+Is it consistent with your previous results?</pre><pre class="codeinput">cov([DXLK, DXLI, DXLF, DXLU]) <span class="comment">% bear in mind the diagonal is for variances</span>
+corr([DXLK, DXLI, DXLF, DXLU])
+</pre><pre class="codeoutput">
+ans =
+
+    4.9757    5.0622    5.0546    2.0892
+    5.0622    6.8432    6.7313    2.8106
+    5.0546    6.7313    8.4062    2.6809
+    2.0892    2.8106    2.6809    3.3523
+
+
+ans =
+
+    1.0000    0.8675    0.7816    0.5116
+    0.8675    1.0000    0.8875    0.5868
+    0.7816    0.8875    1.0000    0.5050
+    0.5116    0.5868    0.5050    1.0000
+
+</pre><h2>QUESTION 4 - Integral calculation<a name="6"></a></h2><pre>Using a discrete approximation of the f(x)=exp(-x^2) function, compute
+the area under the curve representing f for 0 &lt; x &lt; 3</pre><pre class="codeinput">dX = 0.001; <span class="comment">% a small increment do split the interval into</span>
+Xs = 0 : dX : 3; <span class="comment">% a range of values from 0 to 1 by steps of 0.001</span>
+Ys = exp(-Xs.*Xs); <span class="comment">% BEWARE the .* !!!</span>
+area = sum(Ys)*dX <span class="comment">% this is so simple it hurts</span>
+</pre><pre class="codeoutput">
+area =
+
+    0.8867
+
+</pre><h2>QUESTION 5 - Using matrix products<a name="7"></a></h2><pre>You are considering a 70% vs 30% allocation between XLI and XLF
+Compute the mean of such combination
+Compute the variance of such combination</pre><pre class="codeinput">DPTF = 0.70 * DXLI + 0.30 * DXLF; <span class="comment">% dont print this on screen as quite long !!</span>
+
+mptf = mean(DPTF)
+vptf = var(DPTF)
+</pre><pre class="codeoutput">
+mptf =
+
+    0.3097
+
+
+vptf =
+
+    6.9369
+
+</pre><h2>QUESTION 6 - Calculating over a range of values (vector)<a name="8"></a></h2><pre>You are now considering any W vs (1-W) allocation between XLI and XLF
+Compute the possible range of portfolio mean</pre><pre class="codeinput">Ws = 0 : 0.01 : 1; <span class="comment">% please use ; to avoid printing this !!!</span>
+rangeofmeans = Ws * mean(DXLI) + (1-Ws) * mean(DXLF);
+
+min(rangeofmeans)
+max(rangeofmeans)
+</pre><pre class="codeoutput">
+ans =
+
+    0.2405
+
+
+ans =
+
+    0.3393
+
+</pre><h2>QUESTION 7 - Calculating over a range of values (matrix)<a name="9"></a></h2><pre>You are now considering any W vs (1-W) allocation between XLI and XLF
+Compute the possible range of portfolio stdandard deviation</pre><pre class="codeinput">covmatrix = cov([DXLI, DXLF]);
+covXLIXLF = covmatrix(1,2); <span class="comment">% to extract the value of interest in the matrix</span>
+rangeofvariances = (Ws.^2) * var(DXLI) + ((1-Ws).^2) * var(DXLF) + 2 * Ws .* (1-Ws) * covXLIXLF; <span class="comment">% BEWARE the .^ and .* !!!</span>
+min(rangeofvariances)
+max(rangeofvariances)
+</pre><pre class="codeoutput">
+ans =
+
+    6.8362
+
+
+ans =
+
+    8.4062
+
+</pre><h2>QUESTION 8 - Auto-correlation<a name="10"></a></h2><pre>Compute the auto-correlation of DXLK</pre><pre class="codeinput">corr( DXLK(2:end), DXLK(1:end-1) ) <span class="comment">% note that Matlab has an "autocorr" function</span>
+</pre><pre class="codeoutput">
+ans =
+
+   -0.0965
+
+</pre><h2>QUESTION 9 - Numerical integration<a name="11"></a></h2><pre>Compute the previous integral using Matlab "integral" function</pre><pre class="codeinput">somefunction = @(x) exp(-x.^2);
+integral(somefunction, 0, 3) <span class="comment">% this is really for those who dont want "to think" like Matlab</span>
+</pre><pre class="codeoutput">
+ans =
+
+    0.8862
+
+</pre><h2>QUESTION 10 - Mixing several methods<a name="12"></a></h2><pre>In the previous case of a 70% vs 30% allocation, compute the THIRD
+moment of the portfolio distribution
+We remind you the THIRD moment is the E(X^3)
+Can you suggest two different ways of doing this?</pre><pre class="codeinput">mean( DPTF.^3 ) <span class="comment">% that is a possible answer but not so interesting</span>
+mean( (DPTF-mptf).^3 ) <span class="comment">% slightly better answer (centralized data)</span>
+mean( ((DPTF-mptf)/std(DPTF)).^3 ) <span class="comment">% (centralized and scaled data)</span>
+</pre><pre class="codeoutput">
+ans =
+
+   -0.9940
+
+
+ans =
+
+   -7.4430
+
+
+ans =
+
+   -0.4074
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MATLAB Tutorial 1 - Mathieu ZARADZKI
+
+
+%% Data set description
+%  You are being provided with a set of stock sub-index prices
+%  They correspond to the 9 different sector classification of listed
+%  companies: industry, technology, financial, ...
+%  For more information you can read this webpage: http://www.sectorspdr.com/sectorspdr/
+
+
+%% Importing the data
+%  Use MATLAB to open data_m2lab1.csv
+%  Use the *Import* button and see the new variables in the Workspace
+%  Note that Comma Separated Value files are common way to share data
+
+
+%% QUESTION 1 - Single vector manipulation
+%  For DXLK compute:
+%  # the dimension
+%  # the sum and the average
+%  # the variance and standard deviation
+
+size(DXLK) % generic function
+nbobs = length(DXLK) % for a 1 dimensional array
+mxlk = sum(DXLK)/nbobs % the mean of DXLK
+vxlk = sum(DXLK.^2)/nbobs - mxlk^2 % the variance of DXLK - BEWARE the .^ !!!
+sxlk = sqrt(vxlk) % the std. deviation of DXLK
+
+%% QUESTION 2 - Multiple vector manipulation
+%  For the pair of variables DXLK and DXLI compute:
+%  # the covariance
+%  # the correlation
+
+
+%% QUESTION 3 - Using Matlab statistic functions
+%  Use the "cov" function to get the matrix for DXLK, DXLI, DXLF, DXLU
+%  Is it consistent with your previous results?
+
+cov([DXLK, DXLI, DXLF, DXLU]) % bear in mind the diagonal is for variances
+corr([DXLK, DXLI, DXLF, DXLU])
+
+%% QUESTION 4 - Integral calculation
+%  Using a discrete approximation of the f(x)=exp(-x^2) function, compute
+%  the area under the curve representing f for 0 < x < 3
+
+dX = 0.001; % a small increment do split the interval into
+Xs = 0 : dX : 3; % a range of values from 0 to 1 by steps of 0.001
+Ys = exp(-Xs.*Xs); % BEWARE the .* !!!
+area = sum(Ys)*dX % this is so simple it hurts
+
+
+%% QUESTION 5 - Using matrix products
+%  You are considering a 70% vs 30% allocation between XLI and XLF
+%  Compute the mean of such combination
+%  Compute the variance of such combination
+
+DPTF = 0.70 * DXLI + 0.30 * DXLF; % dont print this on screen as quite long !!
+
+mptf = mean(DPTF)
+vptf = var(DPTF)
+
+%% QUESTION 6 - Calculating over a range of values (vector)
+%  You are now considering any W vs (1-W) allocation between XLI and XLF
+%  Compute the possible range of portfolio mean
+
+Ws = 0 : 0.01 : 1; % please use ; to avoid printing this !!!
+rangeofmeans = Ws * mean(DXLI) + (1-Ws) * mean(DXLF);
+
+min(rangeofmeans)
+max(rangeofmeans)
+
+%% QUESTION 7 - Calculating over a range of values (matrix)
+%  You are now considering any W vs (1-W) allocation between XLI and XLF
+%  Compute the possible range of portfolio stdandard deviation
+
+covmatrix = cov([DXLI, DXLF]);
+covXLIXLF = covmatrix(1,2); % to extract the value of interest in the matrix
+rangeofvariances = (Ws.^2) * var(DXLI) + ((1-Ws).^2) * var(DXLF) + 2 * Ws .* (1-Ws) * covXLIXLF; % BEWARE the .^ and .* !!!
+min(rangeofvariances)
+max(rangeofvariances)
+
+
+%% QUESTION 8 - Auto-correlation
+%  Compute the auto-correlation of DXLK
+
+corr( DXLK(2:end), DXLK(1:end-1) ) % note that Matlab has an "autocorr" function
+
+%% QUESTION 9 - Numerical integration
+%  Compute the previous integral using Matlab "integral" function
+
+somefunction = @(x) exp(-x.^2);
+integral(somefunction, 0, 3) % this is really for those who dont want "to think" like Matlab
+
+
+%% QUESTION 10 - Mixing several methods
+%  In the previous case of a 70% vs 30% allocation, compute the THIRD
+%  moment of the portfolio distribution
+%  We remind you the THIRD moment is the E(X^3)
+%  Can you suggest two different ways of doing this?
+
+mean( DPTF.^3 ) % that is a possible answer but not so interesting
+mean( (DPTF-mptf).^3 ) % slightly better answer (centralized data)
+mean( ((DPTF-mptf)/std(DPTF)).^3 ) % (centralized and scaled data)
+
+
+
+##### SOURCE END #####
+--></body></html>
