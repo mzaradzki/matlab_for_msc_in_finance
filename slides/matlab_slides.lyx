@@ -1,0 +1,3150 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+
+\usetheme{CambridgeUS}
+\usecolortheme{default}
+\setbeamercolor*{title}{use=structure,fg=red,bg=black!10}
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=false]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamercolor{block body}{bg=red!10,fg=white}
+\setbeamercolor{block title example}{bg=green!50,fg=black}
+\setbeamercolor{block body example}{bg=green!10,fg=black}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{section in toc}[circle]
+\setbeamertemplate{subsection in toc}[circle]
+
+\newenvironment<>{lectureblock}[1]{%
+  \setbeamercolor{block title}{fg=white,bg=orange}%
+  \setbeamercolor{block body}{fg=white,bg=orange}%
+  \begin{block}#2{#1}}{\end{block}}
+\end_preamble
+\options handout
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\branch L1T
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Part
+Cover
+\end_layout
+
+\begin_layout Title
+Matlab
+\end_layout
+
+\begin_layout TitleGraphic
+Mathieu ZARADZKI
+\end_layout
+
+\begin_layout Author
+MSc Finance
+\end_layout
+
+\begin_layout Date
+June 2014
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Part
+Lecture 1
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{columns}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{column}{0.5
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lectureblock}{Lecture 1} A quick tour 
+\backslash
+end{lectureblock}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{column}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{columns}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Lecture 1
+\end_layout
+
+\begin_layout BeginFrame
+OUTLINE
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Software overview
+\end_layout
+
+\begin_layout BeginFrame
+What is Matlab?
+\end_layout
+
+\begin_layout Itemize
+spreadsheet table is like linear algebra
+\end_layout
+
+\begin_layout Itemize
+not suitable for any kind of information but for a large majority
+\end_layout
+
+\begin_layout Itemize
+Matlab brings the two together
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+What can we use Matlab for?
+\end_layout
+
+\begin_layout Itemize
+much more productive than spreadsheet
+\end_layout
+
+\begin_layout Itemize
+less error / operational risk thanks to visibility
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+think of the Reinhart & Rogoff's error
+\end_layout
+
+\begin_layout Itemize
+or even FT review of Piketty's best-seller book
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+easier to re-use and to share
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Main applications in finance
+\end_layout
+
+\begin_layout Itemize
+econometrics
+\end_layout
+
+\begin_layout Itemize
+optimization such as Portfolio construction
+\end_layout
+
+\begin_layout Itemize
+simulations such as Risk analysis
+\end_layout
+
+\begin_layout Itemize
+or (almost) anything you want ...
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the limit being usage scaling and computation speed
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+so no live/production application such as HF trading
+\end_layout
+
+\begin_layout Itemize
+but any research investigation
+\end_layout
+
+\begin_layout Itemize
+or even prototyping before going full scale e.g.
+ Barclays Live
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Scripting
+\end_layout
+
+\begin_layout BeginFrame
+Environment overview: Command Window
+\end_layout
+
+\begin_layout Itemize
+the Command Window (or shell) to run calculations on the flow
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_command.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Environment overview: Workspace
+\end_layout
+
+\begin_layout Itemize
+the Workspace to see existing variables and data storage
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_workspace.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Environment overview: Command History
+\end_layout
+
+\begin_layout Itemize
+the Command History to quickly review the command sequence or to re-run
+ a command
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_commandhistory.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Environment overview: Current Folder
+\end_layout
+
+\begin_layout Itemize
+the Folder browser allows you to change your working folder to load/save
+ data and calculations
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_folder.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Toolbox addins
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_version.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+You need help?
+\end_layout
+
+\begin_layout Itemize
+just ask for it
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+*help dataset* for quick reminder
+\end_layout
+
+\begin_layout Itemize
+*Search Documentation* widget (top/right of the UI) for full information
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+look on the community web site at http://www.mathworks.fr/matlabcentral/
+\end_layout
+
+\begin_layout Itemize
+look on *StackOverFlow* web site (ma favourite)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Typing instructions
+\end_layout
+
+\begin_layout Itemize
+simply type in the Command Window and press return
+\end_layout
+
+\begin_layout Itemize
+note that with 
+\begin_inset Quotes eld
+\end_inset
+
+;
+\begin_inset Quotes erd
+\end_inset
+
+ at the end of a line the output will not show
+\end_layout
+
+\begin_layout Itemize
+to fix a typo (or any other bug) just key the up arrow to alter pas commands
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Mathematical functions
+\end_layout
+
+\begin_layout Itemize
+stantard maths functions are (obviously) available with intuitive notations
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> log (2.5) % Neperian
+\begin_inset Newline newline
+\end_inset
+
+>> exp(1.3)
+\begin_inset Newline newline
+\end_inset
+
+>> sqrt(4)
+\begin_inset Newline newline
+\end_inset
+
+>> sin( pi ) % Radian base
+\end_layout
+
+\begin_layout Itemize
+exponentiation as an operator or as a function
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> 2^3
+\begin_inset Newline newline
+\end_inset
+
+>> pow(2, 3)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Creating and naming variables
+\end_layout
+
+\begin_layout Itemize
+the best way to understand what you (or your colleagues) did ...
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> x0 = 120 % setting x0 value
+\begin_inset Newline newline
+\end_inset
+
+>> x1 = 125
+\begin_inset Newline newline
+\end_inset
+
+>> dx = x1 - x0 % creating a variable from other variables
+\end_layout
+
+\begin_layout Itemize
+dont have to clutter your window with array-like variables
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> manyintegers = [1 : 10000];
+\begin_inset Newline newline
+\end_inset
+
+>> sum(manyintegers)
+\end_layout
+
+\begin_layout Itemize
+variable names are case sensitive and thus X0 is not x0
+\end_layout
+
+\begin_layout Itemize
+dont re-use existing names !!!
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> which dx
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Saving variables (optional)
+\end_layout
+
+\begin_layout Itemize
+Matlab clears out your variables from the workspace when you exit
+\end_layout
+
+\begin_layout Itemize
+HOWEVER you can save them using .mat files for later use
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> x0 = 120 % setting x0 value
+\begin_inset Newline newline
+\end_inset
+
+>> x1 = 125
+\begin_inset Newline newline
+\end_inset
+
+>> save( ’C:/WORK’ , ’x0’ , ’x1’ ) % note the optional folder path
+\begin_inset Newline newline
+\end_inset
+
+>> clear % deletes all current variables
+\begin_inset Newline newline
+\end_inset
+
+>> load('C:/WORK', 'x0', 'x1')
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Structures
+\end_layout
+
+\begin_layout BeginFrame
+Vectors
+\end_layout
+
+\begin_layout Itemize
+vectors and matrices are arrays that can contain only one datatype: numeric,
+ character or logical.
+\end_layout
+
+\begin_layout Itemize
+they can have 1, 2 ...
+ or even 3 dimensions
+\end_layout
+
+\begin_layout Itemize
+vector and matrix elements are enclosed in square brackets [ ]
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the elements of a row vector are separated by commas (or white spaces)
+\end_layout
+
+\begin_layout Itemize
+the elements of a column are separated by semicolumns
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> somerow = [ 2 , -3 , 5 ] 
+\begin_inset Newline newline
+\end_inset
+
+>> somecolumn = [ 2 ; -3 ; 5 ]
+\begin_inset Newline newline
+\end_inset
+
+>> thesamerow = [ 2 -3 5 ] % here we simply used white-spaces
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Vector - shift and lag
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> somevector = 1 : 3 : 100; 
+\begin_inset Newline newline
+\end_inset
+
+>> somevector( end - 5 : end ) % the 5 last elements
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Vector - functions
+\end_layout
+
+\begin_layout Itemize
+Matlabs likes so much vectors you can do 
+\begin_inset Quotes eld
+\end_inset
+
+anything
+\begin_inset Quotes erd
+\end_inset
+
+ you need with them
+\end_layout
+
+\begin_layout Itemize
+you need the cosine of a vector ?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+does not make any sense to a math teacher
+\end_layout
+
+\begin_layout Itemize
+but Matlab is pragmatic about it
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> cos(somevector)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matrices
+\end_layout
+
+\begin_layout Itemize
+to define a matrix you must use both commas and semicolumns
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> somematrix = [ 1 , 2 , 3 ; 1 , 4 , 9 ; 1 , 8 , 27 ] 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+as you would expect ...
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+all rows must have the same length
+\end_layout
+
+\begin_layout Itemize
+all columns must have the same length
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matrix - size
+\end_layout
+
+\begin_layout Itemize
+the 
+\begin_inset Quotes eld
+\end_inset
+
+size
+\begin_inset Quotes erd
+\end_inset
+
+ function provides you with the number of rows and the number of columns
+ of a matrix
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> [ nbrows, nbcols ] = size( somematrix ) 
+\begin_inset Newline newline
+\end_inset
+
+nbrows = 3
+\begin_inset Newline newline
+\end_inset
+
+nbcols = 3
+\end_layout
+
+\begin_layout Itemize
+the 
+\begin_inset Quotes eld
+\end_inset
+
+numel
+\begin_inset Quotes erd
+\end_inset
+
+ function provides you with the numbe of elements that is the product of
+ dimensions
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matrix - element
+\end_layout
+
+\begin_layout Itemize
+elements are accessed by specifying row-column indices or linear indices
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> somematrix( 2 , 3 ) 
+\end_layout
+
+\begin_layout Itemize
+matrices are read column after column
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> somematrix( 6 ) 
+\end_layout
+
+\begin_layout Itemize
+WARNING in Matlab indices starts at 1 and not at 0 like with many other
+ languages
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matrix - submatrix
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> somematrix( : , 2 ) % extract the 2nd column 
+\begin_inset Newline newline
+\end_inset
+
+>> somematrix( end - 2 : end , : ) % extract the 3 last rows
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matrix - usual suspects
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> zeros( 3 , 3 ) % easy to guess what this is 
+\begin_inset Newline newline
+\end_inset
+
+>> ones( 3 , 3 )% easy to guess what this is
+\begin_inset Newline newline
+\end_inset
+
+>> eye( 3 ) % the identity matrix
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matrix - algebra
+\end_layout
+
+\begin_layout Itemize
+your usual sums and differences
+\end_layout
+
+\begin_layout Itemize
+your usual products
+\end_layout
+
+\begin_layout Itemize
+and the element-wise product denoted .*
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matrix - algebra (bis)
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> det( somematrix ) % easy to guess what this is
+\begin_inset Newline newline
+\end_inset
+
+>> inv( somematrix ) % easy to guess what this is
+\begin_inset Newline newline
+\end_inset
+
+>> somematrix' % the TRANSPOSED matrix
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matrix - collation
+\end_layout
+
+\begin_layout Itemize
+you can append a matrix on the RHS of another one
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> [ somematrix , 2*somematrix ] % horizontal concatenation 
+\end_layout
+
+\begin_layout Itemize
+you can append a matrix at the bottom of another one 
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> [ somematrix ; 2*somematrix ] % vertical concatenation 
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matrix - mutation (?)
+\end_layout
+
+\begin_layout Itemize
+stack the elements of a matrix in one column vector and transpose it
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> matrixasonerow = somematrix( : )’ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+recover the initial matrix by reshaping the vector as a 3-by-3 matrix
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> reshape( matrixasonerow , 3 , 3 ) % back in the initial shape 
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+From algebra to matryoshka
+\end_layout
+
+\begin_layout Itemize
+vectors and matrices are very powerfull ways of manipulating data
+\end_layout
+
+\begin_layout Itemize
+but they 
+\begin_inset Quotes eld
+\end_inset
+
+constrain
+\begin_inset Quotes erd
+\end_inset
+
+ you in two ways
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+you can only store elements of the same type (e.g.
+ only numbers, only text strings)
+\end_layout
+
+\begin_layout Itemize
+all rows (or columns) must have the same dimension (square, cube, ...)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Matlab provides you a way around this if you want to store an heterogeneous
+ data set
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> prof = struct ; 
+\begin_inset Newline newline
+\end_inset
+
+>> prof.name = 'mz' ;
+\begin_inset Newline newline
+\end_inset
+
+>> prof.teaching = 'all stars' ;
+\begin_inset Newline newline
+\end_inset
+
+>> prof.promotions = [2013, 2014] ;
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Computing like a Chef
+\end_layout
+
+\begin_layout BeginFrame
+Matlab cuisine
+\end_layout
+
+\begin_layout Itemize
+Matlab IS like algebra
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+has vectors and all
+\end_layout
+
+\begin_layout Itemize
+is actually very good (fast) at it
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Matlab IS NOT like algebra
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+can mix different type of variables
+\end_layout
+
+\begin_layout Itemize
+allows for 
+\begin_inset Quotes eld
+\end_inset
+
+loose
+\begin_inset Quotes erd
+\end_inset
+
+ but 
+\begin_inset Quotes eld
+\end_inset
+
+sensible
+\begin_inset Quotes erd
+\end_inset
+
+ calculations such as exp(vector)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Part
+Lecture 2
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{columns}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{column}{0.5
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lectureblock}{Lecture 2} Customization 
+\backslash
+end{lectureblock}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{column}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{columns}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Lecture 2
+\end_layout
+
+\begin_layout BeginFrame
+OUTLINE
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Programming
+\end_layout
+
+\begin_layout BeginFrame
+Iteration statements
+\end_layout
+
+\begin_layout Itemize
+computers are fantastic students
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+you show them once and they remember for ever
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+computers are fantastic workers
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+they don't get bored of doing things again and again and again
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+the 
+\begin_inset Quotes eld
+\end_inset
+
+for loops
+\begin_inset Quotes erd
+\end_inset
+
+ are perfect ways to specify repeating tasks
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> efact = 2;
+\begin_inset Newline newline
+\end_inset
+
+>> for en = 2 : 2 : 16
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+efact = efact * en;
+\end_layout
+
+\begin_layout ExampleBlock
+end
+\begin_inset Newline newline
+\end_inset
+
+>> efact
+\end_layout
+
+\begin_layout Itemize
+you can also do 
+\begin_inset Quotes eld
+\end_inset
+
+while loops
+\begin_inset Quotes erd
+\end_inset
+
+ but they are dangerous so lets skip that
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Conditional statements
+\end_layout
+
+\begin_layout Itemize
+computer are very good soldier they don't question instructions unless they
+ are instructed to do so
+\end_layout
+
+\begin_layout Itemize
+sometimes a task will requires some conditions to be met
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+e.g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+buy a IBM stocks IF it is below a price target
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> res = 2;
+\begin_inset Newline newline
+\end_inset
+
+>> for n = 2 : 16
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+if (mod(n, 2) == 0)
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+res = res * n;
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+else
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+res = res + 1;
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+end
+\end_layout
+
+\begin_layout ExampleBlock
+end
+\begin_inset Newline newline
+\end_inset
+
+>> efact
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+m-files
+\end_layout
+
+\begin_layout BeginFrame
+What is an m-file?
+\end_layout
+
+\begin_layout Itemize
+and m-file contains a sequence of valid matlab instructions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+you can have calculations e.g.
+ exp(-2)
+\end_layout
+
+\begin_layout Itemize
+you can have comments e.g.
+ % this is a dull comment
+\end_layout
+
+\begin_layout Itemize
+you can have for-loops and if-tests
+\end_layout
+
+\begin_layout Itemize
+you can have function declaration
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+for example the first class questions were comments in an m-file
+\end_layout
+
+\begin_layout Itemize
+you could have written your matlab code in it
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Why use an m-file?
+\end_layout
+
+\begin_layout Itemize
+the best way to save your work is to write it in a file
+\end_layout
+
+\begin_layout Itemize
+it will then be easy to 
+\begin_inset Quotes eld
+\end_inset
+
+correct a mistake
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+it allows to re-use your excellent Matlab work for later work
+\end_layout
+
+\begin_layout Itemize
+it makes it easy to share it with colleagues
+\end_layout
+
+\begin_layout Itemize
+....
+\end_layout
+
+\begin_layout Itemize
+...
+ I hope you are convinced about m-file usefulness
+\end_layout
+
+\begin_layout Itemize
+...
+ because from now on I only want to see m-file on your PC's
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Create a blank m-file
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_new_file.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Saving your m-file
+\end_layout
+
+\begin_layout Itemize
+why this slides?
+\end_layout
+
+\begin_layout Itemize
+saving a file is obvious ...
+\end_layout
+
+\begin_layout Itemize
+...
+ thinking of doing it but everything crashes is less obvious
+\end_layout
+
+\begin_layout Itemize
+you have been warned, save your work regularly
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Matlab functions
+\end_layout
+
+\begin_layout Itemize
+you remember you can easily 
+\begin_inset Quotes eld
+\end_inset
+
+erase
+\begin_inset Quotes erd
+\end_inset
+
+ a Matlab function ?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+FYI between the two groups 5 of you did it last time
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+it is because Matlab functions do not have special status
+\end_layout
+
+\begin_layout Itemize
+they are just m-files like the function we will write today
+\end_layout
+
+\begin_layout Itemize
+you can even open their file to learn how it works
+\end_layout
+
+\begin_layout Itemize
+or even to modify Matlab ...
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+...
+ but don't do it during my class
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Your own functions
+\end_layout
+
+\begin_layout Itemize
+Matlab saves you a bit of time by adding the necessary function 
+\begin_inset Quotes eld
+\end_inset
+
+place holders
+\begin_inset Quotes erd
+\end_inset
+
+ to your m-file if you want
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_new_function.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+one important limitation is that your file should have the same name as
+ your function
+\end_layout
+
+\begin_layout Itemize
+an important consequence of this is that you cannot define several functions
+ in a single file
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Calling a function
+\end_layout
+
+\begin_layout Itemize
+as Matlab does not make a disctinction between its own ready-to-use functions
+ and yours you can use your function directly in the Command panel OR in
+ other m-files
+\end_layout
+
+\begin_layout Itemize
+the only difference between you and Matlab is that Matlab will never delete
+ your work
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Working with dates
+\end_layout
+
+\begin_layout BeginFrame
+Date representation
+\end_layout
+
+\begin_layout Itemize
+for Matlab dates are just integer numbers
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> today
+\begin_inset Newline newline
+\end_inset
+
+>> 735885 % 13-Oct-2014
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Date formats
+\end_layout
+
+\begin_layout Itemize
+obviously it is possible to display dates in human readable form too
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> datestr(today)
+\begin_inset Newline newline
+\end_inset
+
+>> 13-Oct-2014
+\end_layout
+
+\begin_layout Itemize
+and depending on where that human being comes from Matlab can accomodate
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> datestr(today, 'dd/mm/yy') % european
+\begin_inset Newline newline
+\end_inset
+
+>> datestr(today, 'mm/dd/yy') % USA
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Date utility functions
+\end_layout
+
+\begin_layout Itemize
+day of week
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> weekday( today ) % 1=sunday, 7=saturday
+\end_layout
+
+\begin_layout Itemize
+last day of month
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> eom(2014, 11 )
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Warning and errors
+\end_layout
+
+\begin_layout Itemize
+on some very rare occasions your Matlab instructions will not work
+\end_layout
+
+\begin_layout Itemize
+IF and WHEN that (EVER) happens you should
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+read carefully Matlab message to understand the problems
+\end_layout
+
+\begin_layout Itemize
+not lose patience if Matlab keeps complaining after your changes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+an error may be followed by other ones
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+if you don't make sense of Matlab message split your task
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ever heard of 
+\begin_inset Quotes eld
+\end_inset
+
+divide and conquer
+\begin_inset Quotes erd
+\end_inset
+
+ ? I think an engineer came up with it
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Charts
+\end_layout
+
+\begin_layout BeginFrame
+Creating
+\end_layout
+
+\begin_layout Itemize
+one way is to select the data you wan to chart in the Workspace
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+don't try to chart an number, it only works if it makes sense to do it
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_chart.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Types
+\end_layout
+
+\begin_layout Itemize
+Matlab obviously offers you any type of chart you are used to see in Excel
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+timeseries, bars, bubles, pies
+\end_layout
+
+\begin_layout Itemize
+but don't go overboard with it as it gets time consuming
+\end_layout
+
+\begin_layout Itemize
+simpler is often better
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_chart_types.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Customization
+\end_layout
+
+\begin_layout Itemize
+from the figure window follow these
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Edit
+\end_layout
+
+\begin_layout Itemize
+Figure Properties
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_chart_custom_menu.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Custom line
+\end_layout
+
+\begin_layout Itemize
+simply click on the line to see the required options
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_chart_custom_line.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Custom x and y axis
+\end_layout
+
+\begin_layout Itemize
+simply click on the axis to see the required options
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_chart_custom_y.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Saving charts
+\end_layout
+
+\begin_layout Itemize
+simply click on the 
+\begin_inset Quotes eld
+\end_inset
+
+file
+\begin_inset Quotes erd
+\end_inset
+
+ menu
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_chart_save.png
+	display false
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Command line charts
+\end_layout
+
+\begin_layout Itemize
+when you have long reports to do the GUI is not good enough
+\end_layout
+
+\begin_layout Itemize
+use your programming skills for the charts too
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> plot(DXLF, '*g'); % g for green
+\begin_inset Newline newline
+\end_inset
+
+>> plot(DXLI, '+r'); % r for red
+\begin_inset Newline newline
+\end_inset
+
+>> plot(NETMKT, DXLF, '*b'); % a blue scatter plot
+\end_layout
+
+\begin_layout Itemize
+commands for fancy charts?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+look closely on the previous chart their is a 
+\begin_inset Quotes eld
+\end_inset
+
+Generate Code
+\begin_inset Quotes erd
+\end_inset
+
+ option
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Part
+Lecture 3
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{columns}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{column}{0.5
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lectureblock}{Lecture 3} Matlab goodies - 1 
+\backslash
+end{lectureblock}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{column}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{columns}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Lecture 3
+\end_layout
+
+\begin_layout BeginFrame
+OUTLINE
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Optimisation
+\end_layout
+
+\begin_layout BeginFrame
+Motivation
+\end_layout
+
+\begin_layout Itemize
+rational implies optimal
+\end_layout
+
+\begin_layout Itemize
+finance is about allocation, decision
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+from the entrepreneur deciding between Kapital and Labour
+\end_layout
+
+\begin_layout Itemize
+to Markowitz, Sharpe and Black Litterman
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Examples
+\end_layout
+
+\begin_layout Itemize
+one dimensional search
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> x = fminsearch(@(x)sin(x^2), x0); % one dimension
+\end_layout
+
+\begin_layout Itemize
+multi-dimensional search
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> banana = @(x)100*(x(2)-x(1)^2)^2+(1-x(1))^2; % that is really the function
+ name
+\begin_inset Newline newline
+\end_inset
+
+>> [x,fval] = fminsearch(banana,[-1.2, 1])
+\end_layout
+
+\begin_layout Itemize
+as usual just to 
+\begin_inset Quotes eld
+\end_inset
+
+help fminsearch
+\begin_inset Quotes erd
+\end_inset
+
+ in Matlab for more information
+\end_layout
+
+\begin_layout Subsection
+Random simulation
+\end_layout
+
+\begin_layout BeginFrame
+Why random computation?
+\end_layout
+
+\begin_layout Itemize
+isn't the purpose of computer to be all predictible?
+\end_layout
+
+\begin_layout Itemize
+history provides us with some patterns, such as correlation
+\end_layout
+
+\begin_layout Itemize
+but not every possible event occured
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+what about combination of events?
+\end_layout
+
+\begin_layout Itemize
+what about 
+\begin_inset Quotes eld
+\end_inset
+
+tail
+\begin_inset Quotes erd
+\end_inset
+
+ event?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+that is why we need random models
+\end_layout
+
+\begin_layout Itemize
+and most models cannot be computed with formula, thus the need for random
+ simultations
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Random variable
+\end_layout
+
+\begin_layout Itemize
+a vector of random UNIFORM variables
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> r = a + (b-a) * rand(100,1);
+\end_layout
+
+\begin_layout Itemize
+a vector of random GAUSSIAN variables
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> r = gmean + gstd * randn(100,1);
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Part
+Lecture 4
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{columns}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{column}{0.5
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lectureblock}{Lecture 4} Matlab goodies - 2 
+\backslash
+end{lectureblock}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{column}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{columns}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Lecture 4
+\end_layout
+
+\begin_layout BeginFrame
+OUTLINE
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Data statistics
+\end_layout
+
+\begin_layout BeginFrame
+Descriptive stats (part 1/2)
+\end_layout
+
+\begin_layout Itemize
+the main statistics
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> mockdata = -3 + 2 * randn(1,100) + rand(1,100); % we blend a Normal and
+ a Uniform distribution
+\begin_inset Newline newline
+\end_inset
+
+>> mean( mockdata )
+\begin_inset Newline newline
+\end_inset
+
+>> var( mockdata )
+\begin_inset Newline newline
+\end_inset
+
+>> std( mockdata )
+\begin_inset Newline newline
+\end_inset
+
+>> median( mockdata )
+\begin_inset Newline newline
+\end_inset
+
+>> range( mockdata ) % the high-low spread
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Descriptive stats (part 2/2)
+\end_layout
+
+\begin_layout Itemize
+more advanced statistics
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> skewness( mockdata ) % the THIRD moment
+\begin_inset Newline newline
+\end_inset
+
+>> kurtosis( mockdata ) % the FOURTH moment
+\end_layout
+
+\begin_layout Itemize
+key levels
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> prctile( mockdata, 10 )
+\begin_inset Newline newline
+\end_inset
+
+>> prctile( mockdata, 90 )
+\end_layout
+
+\begin_layout Itemize
+N(0,1) like equivalent levels
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> mockdata = -4 + 3 * randn(1,100);
+\begin_inset Newline newline
+\end_inset
+
+>> zscore( mockdata )
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Data charts
+\end_layout
+
+\begin_layout BeginFrame
+Histograms
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> mockdata = -3 + 2 * randn(1,1000) + rand(1,1000); % same as previous
+ but more points
+\begin_inset Newline newline
+\end_inset
+
+>> hist( mockdata, 25 ); % 25 represents the number of chart BARs
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_hist.png
+	display false
+	width 50page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Box plot
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> mockdata = randn(50, 4); % 4 columns of 50 randn each
+\begin_inset Newline newline
+\end_inset
+
+>> boxplot( mockdata ) % also called the mustache plots
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_boxplot.png
+	display false
+	width 50page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+NormPlot
+\end_layout
+
+\begin_layout Itemize
+NormPlot are the special case QQ-Plot for the Normal distribution
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> strangedata = 2 * randn(1,1000) + 30 * rand(1,1000);
+\begin_inset Newline newline
+\end_inset
+
+>> normplot( strangedata ) % also called Quantile-Quantile Plot
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename screenshots/matlab_normplot.png
+	display false
+	width 50page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Part
+Lecture 5
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{columns}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{column}{0.5
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lectureblock}{Lecture 5} Industrialization 
+\backslash
+end{lectureblock}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{column}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{columns}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Lecture 5
+\end_layout
+
+\begin_layout BeginFrame
+OUTLINE
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Monte Carlo
+\end_layout
+
+\begin_layout BeginFrame
+Why random computation?
+\end_layout
+
+\begin_layout Itemize
+history provides us with some patterns, such as correlation
+\end_layout
+
+\begin_layout Itemize
+but not every possible event occured
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+what about combination of events?
+\end_layout
+
+\begin_layout Itemize
+what about 
+\begin_inset Quotes eld
+\end_inset
+
+tail
+\begin_inset Quotes erd
+\end_inset
+
+ event?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+that is why we need random models
+\end_layout
+
+\begin_layout Itemize
+and most models cannot be computed with formula, thus the need for random
+ simultations
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+How to emulate randomness?
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Deterministic randomness
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Random variable
+\end_layout
+
+\begin_layout Itemize
+a vector of random UNIFORM variables
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> r = a + (b-a) * rand(100,1);
+\end_layout
+
+\begin_layout Itemize
+a vector of random GAUSSIAN variables
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+>> r = gmean + gstd * randn(100,1);
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Stochastic processes
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Brownian motion
+\end_layout
+
+\begin_layout Itemize
+we know Gaussian law is everywhere
+\end_layout
+
+\begin_layout Itemize
+so we need a process equivalent of it
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a process whose increments between two 
+\begin_inset Quotes eld
+\end_inset
+
+dates
+\begin_inset Quotes erd
+\end_inset
+
+ are gaussian!
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Correlated processes
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
